@@ -1,11 +1,9 @@
 Links to Discovery Documents in Head
 ====================================
 
-**As** an External Application
-
-**I want** to find links to the various Discovery Documents
-
-**So that I** can understand API
+**As** an External Application<br/>
+**I want** to find links to the various Discovery Documents<br/>
+**So that I** can understand API<br/>
 		
 > **rationale** This allows an external application to get knowledge information regarding the service
 
