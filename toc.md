@@ -1,7 +1,7 @@
 # Table of Contents
 
 * End Point
-  * [is valid and available](#EndPoint/validendpoint)
+  * [is valid and available](#validendpoint)
 * Landing Page
   * [uses HTML5](#LandingPage/html5)
   * [has links to Discovery Documents in Head](#LandingPage/discoverydoc)
