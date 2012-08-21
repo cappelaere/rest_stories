@@ -14,9 +14,9 @@ Acceptance Criteria
 
 **Given** the available web service endpoint
 
-**When** I access the page
-**Then** I can find a link to the API discovery document
-**And** I can find a link to the OpenSearch document
-**And** I can find a link to the API Explorer document
-**And**	I can find a link to the Documentation root
-**And**	I can find a link to an atom feed
+**When** I access the page<br>
+**Then** I can find a link to the API discovery document<br>
+**And** I can find a link to the OpenSearch document<br/>
+**And** I can find a link to the API Explorer document<br/>
+**And**	I can find a link to the Documentation root<br/>
+**And**	I can find a link to an atom feed<br/>
