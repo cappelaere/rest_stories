@@ -1,4 +1,4 @@
-Links to Discovery documents in Head
+Links to Discovery Documents in Head
 ====================================
 
 **As** an External Application
@@ -15,13 +15,8 @@ Acceptance Criteria
 **Given** the available web service endpoint
 
 **When** I access the page
-
 **Then** I can find a link to the API discovery document
-
 **And** I can find a link to the OpenSearch document
-
 **And** I can find a link to the API Explorer document
-
 **And**	I can find a link to the Documentation root
-
 **And**	I can find a link to an atom feed
