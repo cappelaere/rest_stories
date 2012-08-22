@@ -1,577 +1,254 @@
-<html>
-  <head>
-    <title>REST User Stories</title>
-    <style>
-      body {
-        font: 14px/1.4 Arial, sans-serif;
-        padding: 50px 180px;
-      }
-      h1 {
-        padding-left: 5px;
-        border-bottom: 3px solid #eee;
-      }
-      pre {
-        margin: 15px 0;
-        padding: 15px;
-        border: 1px solid #eee;
-      }
-      a {
-        color: #000000;
-      }
-      
-      a:hover {
-        color: blue;
-      }
-      
-	blockquote {
-		background-color: lightgray;
-		margin: 1em;
-		font-style: italic;
-	}
-	div.mp:before {
-		content: url('./pages/story.jpg');
-	}
-
-	div.mp {
-	    border-bottom: 100px solid #FFF;
-	}
-	div.mp:after {
-		content: <br/>
-	}
-    </style>
-  </head>
-  <body>
-<img src="./pages/cover.jpg" />
-
-<hr/>
-<h1>REST Rules Handbook</h1>
-<p>version: 0.1</p>
-
-<h2 id="Contributors">Contributors</h2>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <link rel="stylesheet" href="./book.css" type="text/css" />
+</head>
+<body>
+<div class="figure">
+<img src="./pages/cover.jpg" /><p class="caption"></p>
+</div>
+<p>Draft Version 0.1.0</p>
+<h2>Contributors</h2>
 <ul>
-	<li>Pat Cappelaere Vightel, NASA ESTO</li>
-	<li>...</li>
+<li>Pat Cappelaere, Vightel, pat@cappelaere.com</li>
+<li>Peter Rushforth, GeoConnections Peter.Rushforth@NRCan-RNCan.gc.ca</li>
+<li>Herve Caumont, Terradue herve.caumont@terradue.com</li>
+<li>Pedro Gonçalves, Terradue pedro.goncalves@terradue.com</li>
+<li>Volker Mische, Couchbase volker@couchbase.com</li>
+<li>Jeff Harrison, The Carbon Project jharrison@thecarbonproject.com</li>
+<li>Peter Vretanos, CubeWerx, pvmobile@cubewerx.com</li>
 </ul>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<hr/>
-<div class='mp'>
-<h1>Table of Contents</h1>
+<h2>Table of Contents</h2>
 <ul>
 <li>End Point
-
 <ul>
-<li><a href="#EndPoint_ValidEndPoint" data-bare-link="true">is valid and available</a></li>
-</ul>
-</li>
+<li><a href="#EndPoint_ValidEndPoint">is valid and available</a></li>
+</ul></li>
 <li>Landing Page
-
 <ul>
-<li><a href="#LandingPage_HTML5" data-bare-link="true">uses HTML5</a></li>
-<li><a href="#LandingPage_DiscoveryDoc" data-bare-link="true">has links to Discovery Documents in Head</a></li>
-</ul>
-</li>
+<li><a href="#LandingPage_HTML5">uses HTML5</a></li>
+<li><a href="#LandingPage_DiscoveryDoc">has links to Discovery Documents in Head</a></li>
+</ul></li>
 <li>OpenSearch Document
-
 <ul>
-<li><a href="#OpenSearch_DiscoveryDoc" data-bare-link="true">is accessible</a></li>
-<li><a href="#OpenSearch_HTMLSearch" data-bare-link="true">HTML API Search</a></li>
-<li><a href="#OpenSearch_ATOMSearch" data-bare-link="true">Atom API Search</a></li>
-</ul>
-</li>
+<li><a href="#OpenSearch_DiscoveryDoc">is accessible</a></li>
+<li><a href="#OpenSearch_HTMLSearch">HTML API Search</a></li>
+<li><a href="#OpenSearch_ATOMSearch">Atom API Search</a></li>
+</ul></li>
 <li>Discovery Service
-
 <ul>
-<li><a href="#Discovery_GoogleDiscovery" data-bare-link="true">Using_Google_API_Discovery_Document</a></li>
-<li><a href="#Discovery_GeoServices" data-bare-link="true">Using_Geoservices_Discovery_Catalog</a></li>
-<li><a href="#Discovery_Atompub" data-bare-link="true">Using_Atompub</a></li>
-<li><a href="#Discovery_None" data-bare-link="true">Non Discovery Document</a></li>
-</ul>
-</li>
+<li><a href="#Discovery_GoogleDiscovery">Using_Google_API_Discovery_Document</a></li>
+<li><a href="#Discovery_GeoServices">Using_Geoservices_Discovery_Catalog</a></li>
+<li><a href="#Discovery_Atompub">Using_Atompub</a></li>
+<li><a href="#Discovery_None">No Discovery Document</a></li>
+</ul></li>
 <li>API Explorer
-
 <ul>
-<li><a href="#API_DiscoveryDoc" data-bare-link="true">link can be discovered</a></li>
-</ul>
-</li>
+<li><a href="#API_DiscoveryDoc">link can be discovered</a></li>
+</ul></li>
 <li>Uniform Interface
-
 <ul>
-<li><a href="#UniformInterface_Verbs" data-bare-link="true">uses limited http verbs</a></li>
-<li><a href="#UniformInterface_Idempotence" data-bare-link="true">follows idempotence rules</a></li>
-</ul>
-</li>
+<li><a href="#UniformInterface_Verbs">uses limited http verbs</a></li>
+<li><a href="#UniformInterface_Idempotence">follows idempotence rules</a></li>
+</ul></li>
 <li>Content Negotiation
-
 <ul>
-<li><a href="#ContentNegotiation_Headers" data-bare-link="true">uses Accept and Content-Type headers</a></li>
-<li><a href="#ContentNegotiation_Suffixes" data-bare-link="true">allows representation suffixes</a></li>
-<li><a href="#ContentNegotiation_MimeTypes" data-bare-link="true">supports custom mime types</a></li>
-</ul>
-</li>
+<li><a href="#ContentNegotiation_Headers">uses Accept and Content-Type headers</a></li>
+<li><a href="#ContentNegotiation_Suffixes">allows representation suffixes</a></li>
+<li><a href="#ContentNegotiation_MimeTypes">supports custom mime types</a></li>
+</ul></li>
 <li>Atom Feeds
-
 <ul>
-<li><a href="#Atom_Atom" data-bare-link="true">are available for lists of resources</a></li>
-<li><a href="#Atom_Extend" data-bare-link="true">may be extended</a></li>
-<li><a href="#Atom_GData2.0" data-bare-link="true">are extended using GData 2.0 protocol</a></li>
-</ul>
-</li>
+<li><a href="#Atom_Atom">are available for lists of resources</a></li>
+<li><a href="#Atom_Extend">may be extended</a></li>
+<li><a href="#Atom_GData2.0">are extended using GData 2.0 protocol</a></li>
+</ul></li>
 <li>Compression
-
 <ul>
-<li><a href="#Compression_Compression" data-bare-link="true">should use GZIP as possible to reduce bandwidth</a></li>
-</ul>
-</li>
+<li><a href="#Compression_Compression">should use GZIP as possible to reduce bandwidth</a></li>
+</ul></li>
 <li>Caching
-
 <ul>
 <li>[Caching Headers] (#Caching_Caching)</li>
-<li><a href="#Caching_GData2.0" data-bare-link="true">GData 2.0 Caching Headers</a></li>
+<li><a href="#Caching_GData2.0">GData 2.0 Caching Headers</a></li>
 <li>Expires Headers</li>
 <li>Frontend Caching</li>
-</ul>
-</li>
+</ul></li>
 <li>Hypermedia As The Engine Of State
-
 <ul>
 <li>Embedded links in resources</li>
 <li>Defines links relations</li>
-</ul>
-</li>
+</ul></li>
 <li>Security
-
 <ul>
 <li>defines security protocol</li>
-</ul>
-</li>
+</ul></li>
 <li>Cross Origin Resource Sharing
-
 <ul>
 <li>supports cross-origin resource sharing</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-
-
-</div>
-<div class='mp'>
-<h1><p><a name="EndPoint_ValidEndPoint"></a></p>
-
-Valid Endpoint</h1>
-<p><strong>As</strong> an External Application<br />
-<strong>I want to</strong> make sure that the supplied end point url available<br />
-<strong>So that</strong> can start interfacing with the web service<br /></p>
-
-<blockquote><p><strong>rationale</strong> We want to make sure that the web service exists and is available</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong> a supplied url<br />
-<strong>When</strong> I make a HEAD request<br />
-<strong>Then</strong> it is valid and available<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="LandingPage_HTML5"></a></p>
-
-HTML5</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want</strong> scrape the head of landing page<br />
-<strong>So that I</strong> can find various document links<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows the application to mine to API.  It requires the page to be properly formatted using HTML5.</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong> a published web service endpoint<br />
-<strong>When</strong> I access the landing page<br />
-<strong>Then</strong> I can find an HTML5 namespace<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="LandingPage_DiscoveryDoc"></a></p>
-
-Links to Discovery Documents in Head</h1>
-<p><strong>As</strong> an External Application<br />
-<strong>I want</strong> to find links to the various Discovery Documents<br />
-<strong>So that I</strong> can understand API<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an external application to get knowledge information regarding the service</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
+<a name="EndPoint_ValidEndPoint"></a>
+<h1>Valid Endpoint</h1>
+<p><strong>As</strong> an External Application<br /><strong>I want to</strong> make sure that the supplied end point url available<br /><strong>So that</strong> can start interfacing with the web service</p>
+<blockquote>
+<p><strong>rationale</strong> We want to make sure that the web service exists and is available</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> a supplied url<br /><strong>When</strong> I make a HEAD request<br /><strong>Then</strong> it is valid and available <a name="LandingPage_HTML5"></a></p>
+<h1>HTML5</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want</strong> scrape the head of landing page<br/> <strong>So that I</strong> can find various document links<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows the application to mine to API. It requires the page to be properly formatted using HTML5.</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> a published web service endpoint<br/> <strong>When</strong> I access the landing page<br/> <strong>Then</strong> I can find an HTML5 namespace<br/> <a name="LandingPage_DiscoveryDoc"></a></p>
+<h1>Links to Discovery Documents in Head</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want</strong> to find links to the various Discovery Documents<br/> <strong>So that I</strong> can understand API<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an external application to get knowledge information regarding the service</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
 <p><strong>Given</strong> the available web service endpoint</p>
-
-<p><strong>When</strong> I access the page<br />
-<strong>Then</strong> I can find a link to the API discovery document<br />
-<strong>And</strong> I can find a link to the OpenSearch document<br />
-<strong>And</strong> I can find a link to the API Explorer document<br />
-<strong>And</strong> I can find a link to the Documentation root<br />
-<strong>And</strong> I can find a link to an atom feed<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="OpenSearch_DiscoveryDoc"></a></p>
-
-OpenSearch Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   find OpenSearch Document and Exercise search<br />
-<strong>So that I can</strong> provide in-browser search to my users <br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows a browser to provide in-line custom search</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to OpenSearch document<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    OpenSearch Document is accessible<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="OpenSearch_HTMLSearch"></a></p>
-
-OpenSearch Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   find OpenSearch Document and Exercise search in HTML format<br />
-<strong>So that I can</strong> can provide in-browser search to my users <br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows a browser to provide in-line custom search</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to OpenSearch document<br />
-<strong>When</strong>    I follow the link and specify HTML output<br />
-<strong>Then</strong>    I should get results in html<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="OpenSearch_ATOMSearch"></a></p>
-
-OpenSearch Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong> find OpenSearch Document and Exercise search in HTML format<br />
-<strong>So that I can</strong> provide in-browser search to my users <br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows a browser to provide in-line custom search</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to OpenSearch document<br />
-<strong>When</strong>    I follow the link and specify ATOM output<br />
-<strong>Then</strong>    I should get results in Atom format<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Discovery_GoogleDiscovery"></a></p>
-
-Google API Discovery Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   find API Discovery Document<br />
-<strong>So that I can</strong> can get knowledge of API<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an application to get context information to access API</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    API Discovery Document is accessible<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    document should contain service metadata<br />
-<strong>Then</strong>    document should contain resource collections<br />
-<strong>Then</strong>    document should contain schemas<br />
-<strong>Then</strong>    document should contain security protocol<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Discovery_GeoServices"></a></p>
-
-GeoServices API Discovery Document</h1>
-<p><strong>As</strong> an External Application<br />
-<strong>I want to</strong>   find API Discovery Document<br />
-<strong>So that I can</strong> can get knowledge of API<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an application to get context information to access API</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to Catalog document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    Catalog Document is accessible<br />
-<strong>And</strong>     Catalog Document should be accessible with proper headers as well<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    document should contain service metadata<br />
-<strong>Then</strong>    document should contain service collections<br />
-<strong>Then</strong>    document should contain folders<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    document should point to service catalogs<br />
-<strong>Then</strong>    services should have their own description documents<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to Service document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    service description is available<br />
-<strong>Then</strong>    service description document should contain description<br />
-<strong>Then</strong>    service description document should contain list of published resources<br />
-<strong>Then</strong>    service description document should contain list of schemas<br />
-<strong>Then</strong>    service description document should contain security information<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to folder document is accessible<br />
-<strong>When</strong>    I follow the link<br />
-<strong>Then</strong>    service description is available<br />
-<strong>Then</strong>    folders should have their own description documents<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Discovery_Atompub"></a></p>
-
-AtomPub Service Discovery Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   find the AtomPub Service Discovery Document<br />
-<strong>So that I can</strong> can get knowledge of API<br /></p>
-
-<blockquote><p><strong>rationale</strong> Follow the AtomPub Discovery Service - TO BE IMPLEMENTED</p></blockquote>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Discovery_None"></a></p>
-
-No Discovery Document</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   find API Discovery Document<br />
-<strong>So that I can</strong> can get knowledge of API<br /></p>
-
-<blockquote><p><strong>rationale</strong> Not offering a discovery document is not very helpful!  Sorry!</p></blockquote>
-
-</div>
-<div class='mp'>
-<h1><p><a name="UniformInterface_Verbs"></a></p>
-
-Limited HTTP Verbs</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   access resources using limited HTTP verbs<br />
-<strong>So that I can</strong> can reduce interface complexity<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an application to access resources in a limited and consistent manner</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document<br />
-<strong>When</strong>    I exercise API<br />
-<strong>Then</strong>    it uses limited http verbs<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="UniformInterface_Idempotence"></a></p>
-
-Idempotence</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   access resources using limited HTTP verbs<br />
-<strong>So that I can</strong> can reduce interface complexity<br /></p>
-
-<blockquote><p>**rationale This allows an application to access resources in a limited and consistent manner</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   link to API Discovery document<br />
-<strong>When</strong>    I exercise API<br />
-<strong>Then</strong>    it follows idempotence rules<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="ContentNegotiation_Headers"></a></p>
-
-Accepts and Content-Type Headers</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   control the output resource representation using Accept Headers<br />
-<strong>So that I can</strong> can get a representation that I can process<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an external application to get resources using a specific representation that may be easier to process.</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I set the header: Accept=text/html <br />
-<strong>Then</strong>    I obtain a resource with Content-Type=text/html<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I set the header: Accept=application/json <br />
-<strong>Then</strong>    I obtain a resource with Content-Type=application/json<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I set the header: Accept=application/rip_me (or any invalid mime type) <br />
-<strong>Then</strong>    I get a 406 error<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="ContentNegotiation_Suffixes"></a></p>
-
-Allow Representation Suffixes</h1>
-<p><strong>As</strong>  an External User<br />
-<strong>I want to</strong>   control the output resource representation using additional suffixes to the url<br />
-<strong>So that I can</strong> can get a representation that I can process without using Accept Headers<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an external user to get specific resource representation directly from the browser without using Accept headers</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I add .html extension to the URL <br />
-<strong>Then</strong>    I obtain a resource with Content-Type=text/html<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I add .json  extension to the URL<br />
-<strong>Then</strong>    I obtain a resource with Content-Type=application/json<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list a resource urls and for each url<br />
-<strong>When</strong>    I set .xyz or invalid extension to the URL<br />
-<strong>Then</strong>    I get a 406 error<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="ContentNegotiation_MimeTypes"></a></p>
-
-Custom Mime Types</h1>
-<p><strong>As</strong>  an External Application<br />
-<strong>I want to</strong>   use Custom Mime Types for Content Negotiation<br />
-<strong>So that I can</strong> can signify my acceptance of the interface and get proper resource representation<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   desire to use Content Negotiation to constrain the interface<br />
-<strong>When</strong>    I use Mime-types in Accept headers to determine the proper resource representation to retrieve<br />
-<strong>Then</strong>    I use one of the existing IANA-approved mime-types that service may support<br /></p>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   desire to use custom media type for Content Negotiation to constrain the interface<br />
-<strong>When</strong>    I use custom Mime-type in Accept headers to determine the proper resource representation to output<br />
-<strong>Then</strong>    I use existing IANA-approved mime-types<br />
-<strong>And</strong>     I use a profile information attribute<br />
-<strong>And</strong>     I use a version information attribute<br />
-<strong>And</strong>     I use a describedby information attribute to point to an existing schema or profile document<br /></p>
-
-<blockquote><p><strong>rationale</strong> Content negotiation is important in some cases to specify a particular resource representation.  The danger is to expand the concept to domain specific content.  Some organizations have been pushing for custom media types of the form: application/vnd.myapp+json.  This form extends the defined application/json mime-type and specifies the vendor-domain specific content vnd.myapp.  This is problematic and turns out to hurt more than help content negotiation. It requires developers to change their browser settings to accept the new type and may require IT administrators to change firewall/proxy settings (which my cause some friction for highy secured environments).  It will not scale easily.  An alternate form may be used to alleviate those problems but does not seem to be of much value either if the application provides a schema or profile (which it should).  This alternate form is, using a json example: application/json; profile='vnd.myapp'; version='1.0'; describedby='http://myapp.com/schema.rnc'.  It is highly likely that the schema and/or profile will contain version information and all domain specific content.  This schema and/or profile will have been accessed in the discovery phase making that over-specification unnecessary and overly complex with no value added.</p></blockquote>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Atom_Atom"></a></p>
-
-Atom Feeds available for lists of resources</h1>
-<p><strong>As</strong> a user<br />
-<strong>I want to</strong> access list of resources using ATOM Format<br />
-<strong>So that I</strong> can subscribe to and visualize the data feed in browser<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows a user to subscribe to particular data feed using a familiar NewsFeed Reader.  If the feed is published to an aggregator, the user can receive notifications on changes.</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list of resources, for each resource end point<br />
-<strong>When</strong>    I use GET with an application/atom+xml Accept Header<br />
-<strong>Then</strong>    server returns application/atom+xml content<br />
-<strong>And</strong>    it returns a valid feed<br />
-<strong>And</strong> I can see that the feed is published to an aggregator<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Atom_Extend"></a></p>
-
-Atom Feeds may be extended</h1>
-<p><strong>As</strong> a web service
-<strong>I want to</strong> extend ATOM protocol
-<strong>So that I</strong> can publish my custom resources in a meaningful way for external applications</p>
-
-<blockquote><p><strong>rationale</strong> This allows an external application to mine the entries of a feed without having to parse the HTML content of the entry.  ATOM Extensions can be done using the GData 2.0 or 1.0 protocol, or OData 1.0.</p></blockquote>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Atom_GData2.0"></a></p>
-
-Atom Feeds can be extended using Gdata 2.0 protocol</h1>
-<p><strong>As</strong>  a server<br />
-<strong>I want to</strong> extend the ATOM protocol using GData 2.0<br />
-<strong>So that I</strong> can publish my own resources in a meaningful way<br /></p>
-
-<blockquote><p><strong>rationale</strong> This allows an external Application to have access to the resources in a meaningful way without having to parse the HTML content</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   list of resources, for each resource end point<br />
-<strong>When</strong>    I use GET with an application/atom+xml Accept Header<br />
-<strong>Then</strong>    feed uses etag attribute<br />
-<strong>And</strong>     feed uses category tag and proper accessible schema<br />
-<strong>And</strong>     feed uses OpenSearch namespace and attributes<br />
-<strong>And</strong>     entries use etag attribute<br />
-<strong>And</strong>     entries use category tag and proper accessible format<br /></p>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Caching_Caching"></a></p>
-
-Caching Headers</h1>
-<p><strong>As</strong>  a web service<br />
-<strong>I want to</strong>   pay attention to caching header information<br />
-<strong>So that I can</strong> avoid sending superfluous data<br /></p>
-
-<blockquote><p><strong>rationale</strong> This reduces overall bandwidth.</p></blockquote>
-
-</div>
-<div class='mp'>
-<h1><p><a name="Caching_GData2.0"></a></p>
-
-GData 2.0 Caching Headers</h1>
-<p><strong>As</strong>  a web service<br />
-<strong>I want to</strong>   pay attention to caching header information<br />
-<strong>So that I can</strong> avoid sending superfluous data<br /></p>
-
-<blockquote><p><strong>rationale</strong> This reduces overall bandwidth.</p></blockquote>
-
-<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
-
-<p><strong>Given</strong>   http transaction<br />
-<strong>When</strong>    using GData 2.0 protocol <br />
-<strong>Then</strong>    I should use GData-Version 2.0 in headers<br />
-<strong>Then</strong>    I should use ETag in headers<br />
-<strong>Then</strong>    I should use Last-Modified in headers<br />
-<strong>Then</strong>    I should return a 304 Not Modified if using If-None-Match<br />
-<strong>Then</strong>    I should return a 304 Not Modified if using Last-Modified<br />
-<strong>Then</strong>    I should support Conditional Replace with If-Match in headers<br />
-<strong>Then</strong>    I should support Conditional Replace with If-Match in headers<br />
-<strong>Then</strong>    I should support Override Replace with If-Match: * in headers<br />
-<strong>Then</strong>    I should support Conditional Delete with If-Match in headers<br />
-<strong>Then</strong>    I should support Delete with If-Match: * in headers<br /></p>
-
-</div>
-  </body>
+<p><strong>When</strong> I access the page<br> <strong>Then</strong> I can find a link to the API discovery document<br> <strong>And</strong> I can find a link to the OpenSearch document<br/> <strong>And</strong> I can find a link to the API Explorer document<br/> <strong>And</strong> I can find a link to the Documentation root<br/> <strong>And</strong> I can find a link to an atom feed<br/> <a name="OpenSearch_DiscoveryDoc"></a></p>
+<h1>OpenSearch Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find OpenSearch Document and Exercise search<br/> <strong>So that I can</strong> provide in-browser search to my users <br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows a browser to provide in-line custom search</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to OpenSearch document<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> OpenSearch Document is accessible<br/> <a name="OpenSearch_HTMLSearch"></a></p>
+<h1>OpenSearch Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find OpenSearch Document and Exercise search in HTML format<br/> <strong>So that I can</strong> can provide in-browser search to my users <br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows a browser to provide in-line custom search</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to OpenSearch document<br/> <strong>When</strong> I follow the link and specify HTML output<br/> <strong>Then</strong> I should get results in html<br/> <a name="OpenSearch_ATOMSearch"></a></p>
+<h1>OpenSearch Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find OpenSearch Document and Exercise search in HTML format<br/> <strong>So that I can</strong> provide in-browser search to my users <br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows a browser to provide in-line custom search</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to OpenSearch document<br/> <strong>When</strong> I follow the link and specify ATOM output<br/> <strong>Then</strong> I should get results in Atom format<br/> <a name="Discovery_GoogleDiscovery"></a></p>
+<h1>Google API Discovery Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find API Discovery Document<br/> <strong>So that I can</strong> can get knowledge of API<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an application to get context information to access API</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> API Discovery Document is accessible<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> document should contain service metadata<br/> <strong>Then</strong> document should contain resource collections<br/> <strong>Then</strong> document should contain schemas<br/> <strong>Then</strong> document should contain security protocol<br/> <a name="Discovery_GeoServices"></a></p>
+<h1>GeoServices API Discovery Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find API Discovery Document<br/> <strong>So that I can</strong> can get knowledge of API<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an application to get context information to access API</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to Catalog document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> Catalog Document is accessible<br/> <strong>And</strong> Catalog Document should be accessible with proper headers as well<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> document should contain service metadata<br/> <strong>Then</strong> document should contain service collections<br/> <strong>Then</strong> document should contain folders<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> document should point to service catalogs<br/> <strong>Then</strong> services should have their own description documents<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to Service document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> service description is available<br/> <strong>Then</strong> service description document should contain description<br/> <strong>Then</strong> service description document should contain list of published resources<br/> <strong>Then</strong> service description document should contain list of schemas<br/> <strong>Then</strong> service description document should contain security information<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to folder document is accessible<br/> <strong>When</strong> I follow the link<br/> <strong>Then</strong> service description is available<br/> <strong>Then</strong> folders should have their own description documents<br/></p>
+<a name="Discovery_Atompub"></a>
+<h1>AtomPub Service Discovery Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find the AtomPub Service Discovery Document<br/> <strong>So that I can</strong> can get knowledge of API<br/></p>
+<blockquote>
+<p><strong>rationale</strong> Follow the AtomPub Discovery Service - TO BE IMPLEMENTED</p>
+</blockquote>
+<a name="Discovery_None"></a>
+<h1>No Discovery Document</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> find API Discovery Document<br/> <strong>So that I can</strong> can get knowledge of API<br/></p>
+<blockquote>
+<p><strong>rationale</strong> Not offering a discovery document is not very helpful! Sorry!</p>
+</blockquote>
+<a name="UniformInterface_Verbs"></a>
+<h1>Limited HTTP Verbs</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> access resources using limited HTTP verbs<br/> <strong>So that I can</strong> can reduce interface complexity<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an application to access resources in a limited and consistent manner</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document<br/> <strong>When</strong> I exercise API<br/> <strong>Then</strong> it uses limited http verbs<br/> <a name="UniformInterface_Idempotence"></a></p>
+<h1>Idempotence</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> access resources using limited HTTP verbs<br/> <strong>So that I can</strong> can reduce interface complexity<br/></p>
+<blockquote>
+<p>**rationale This allows an application to access resources in a limited and consistent manner</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> link to API Discovery document<br/> <strong>When</strong> I exercise API<br/> <strong>Then</strong> it follows idempotence rules<br/> <a name="ContentNegotiation_Headers"></a></p>
+<h1>Accepts and Content-Type Headers</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> control the output resource representation using Accept Headers<br/> <strong>So that I can</strong> can get a representation that I can process<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an external application to get resources using a specific representation that may be easier to process.</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I set the header: Accept=text/html <br/> <strong>Then</strong> I obtain a resource with Content-Type=text/html<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I set the header: Accept=application/json <br/> <strong>Then</strong> I obtain a resource with Content-Type=application/json<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I set the header: Accept=application/rip_me (or any invalid mime type) <br/> <strong>Then</strong> I get a 406 error<br/></p>
+<a name="ContentNegotiation_Suffixes"></a>
+<h1>Allow Representation Suffixes</h1>
+<p><strong>As</strong> an External User<br/> <strong>I want to</strong> control the output resource representation using additional suffixes to the url<br/> <strong>So that I can</strong> can get a representation that I can process without using Accept Headers<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an external user to get specific resource representation directly from the browser without using Accept headers</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I add .html extension to the URL <br/> <strong>Then</strong> I obtain a resource with Content-Type=text/html<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I add .json extension to the URL<br/> <strong>Then</strong> I obtain a resource with Content-Type=application/json<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list a resource urls and for each url<br/> <strong>When</strong> I set .xyz or invalid extension to the URL<br/> <strong>Then</strong> I get a 406 error<br/> <a name="ContentNegotiation_MimeTypes"></a></p>
+<h1>Custom Mime Types</h1>
+<p><strong>As</strong> an External Application<br/> <strong>I want to</strong> use Custom Mime Types for Content Negotiation<br/> <strong>So that I can</strong> can signify my acceptance of the interface and get proper resource representation<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> desire to use Content Negotiation to constrain the interface<br/> <strong>When</strong> I use Mime-types in Accept headers to determine the proper resource representation to retrieve<br/> <strong>Then</strong> I use one of the existing IANA-approved mime-types that service may support<br/></p>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> desire to use custom media type for Content Negotiation to constrain the interface<br/> <strong>When</strong> I use custom Mime-type in Accept headers to determine the proper resource representation to output<br/> <strong>Then</strong> I use existing IANA-approved mime-types<br/> <strong>And</strong> I use a profile information attribute<br/> <strong>And</strong> I use a version information attribute<br/> <strong>And</strong> I use a describedby information attribute to point to an existing schema or profile document<br/></p>
+<blockquote>
+<p><strong>rationale</strong> Content negotiation is important in some cases to specify a particular resource representation. The danger is to expand the concept to domain specific content. Some organizations have been pushing for custom media types of the form: application/vnd.myapp+json. This form extends the defined application/json mime-type and specifies the vendor-domain specific content vnd.myapp. This is problematic and turns out to hurt more than help content negotiation. It requires developers to change their browser settings to accept the new type and may require IT administrators to change firewall/proxy settings (which my cause some friction for highy secured environments). It will not scale easily. An alternate form may be used to alleviate those problems but does not seem to be of much value either if the application provides a schema or profile (which it should). This alternate form is, using a json example: application/json; profile='vnd.myapp'; version='1.0'; describedby='http://myapp.com/schema.rnc'. It is highly likely that the schema and/or profile will contain version information and all domain specific content. This schema and/or profile will have been accessed in the discovery phase making that over-specification unnecessary and overly complex with no value added. <a name="Atom_Atom"></a></p>
+</blockquote>
+<h1>Atom Feeds available for lists of resources</h1>
+<p><strong>As</strong> a user<br/> <strong>I want to</strong> access list of resources using ATOM Format<br/> <strong>So that I</strong> can subscribe to and visualize the data feed in browser<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows a user to subscribe to particular data feed using a familiar NewsFeed Reader. If the feed is published to an aggregator, the user can receive notifications on changes.</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list of resources, for each resource end point<br/> <strong>When</strong> I use GET with an application/atom+xml Accept Header<br/> <strong>Then</strong> server returns application/atom+xml content<br/> <strong>And</strong> it returns a valid feed<br/> <strong>And</strong> I can see that the feed is published to an aggregator<br/> <a name="Atom_Extend"></a></p>
+<h1>Atom Feeds may be extended</h1>
+<p><strong>As</strong> a web service <strong>I want to</strong> extend ATOM protocol <strong>So that I</strong> can publish my custom resources in a meaningful way for external applications</p>
+<blockquote>
+<p><strong>rationale</strong> This allows an external application to mine the entries of a feed without having to parse the HTML content of the entry. ATOM Extensions can be done using the GData 2.0 or 1.0 protocol, or OData 1.0. <a name="Atom_GData2.0"></a></p>
+</blockquote>
+<h1>Atom Feeds can be extended using Gdata 2.0 protocol</h1>
+<p><strong>As</strong> a server<br/> <strong>I want to</strong> extend the ATOM protocol using GData 2.0<br/> <strong>So that I</strong> can publish my own resources in a meaningful way<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This allows an external Application to have access to the resources in a meaningful way without having to parse the HTML content</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> list of resources, for each resource end point<br/> <strong>When</strong> I use GET with an application/atom+xml Accept Header<br/> <strong>Then</strong> feed uses etag attribute<br/> <strong>And</strong> feed uses category tag and proper accessible schema<br/> <strong>And</strong> feed uses OpenSearch namespace and attributes<br/> <strong>And</strong> entries use etag attribute<br/> <strong>And</strong> entries use category tag and proper accessible format<br/> <a name="Caching_Caching"></a></p>
+<h1>Caching Headers</h1>
+<p><strong>As</strong> a web service<br/> <strong>I want to</strong> pay attention to caching header information<br/> <strong>So that I can</strong> avoid sending superfluous data<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This reduces overall bandwidth. <a name="Caching_GData2.0"></a></p>
+</blockquote>
+<h1>GData 2.0 Caching Headers</h1>
+<p><strong>As</strong> a web service<br/> <strong>I want to</strong> pay attention to caching header information<br/> <strong>So that I can</strong> avoid sending superfluous data<br/></p>
+<blockquote>
+<p><strong>rationale</strong> This reduces overall bandwidth.</p>
+</blockquote>
+<h2>Acceptance Criteria</h2>
+<p><strong>Given</strong> http transaction<br/> <strong>When</strong> using GData 2.0 protocol <br/> <strong>Then</strong> I should use GData-Version 2.0 in headers<br/> <strong>Then</strong> I should use ETag in headers<br/> <strong>Then</strong> I should use Last-Modified in headers<br/> <strong>Then</strong> I should return a 304 Not Modified if using If-None-Match<br/> <strong>Then</strong> I should return a 304 Not Modified if using Last-Modified<br/> <strong>Then</strong> I should support Conditional Replace with If-Match in headers<br/> <strong>Then</strong> I should support Conditional Replace with If-Match in headers<br/> <strong>Then</strong> I should support Override Replace with If-Match: * in headers<br/> <strong>Then</strong> I should support Conditional Delete with If-Match in headers<br/> <strong>Then</strong> I should support Delete with If-Match: * in headers<br/></p>
+</body>
 </html>

@@ -3,8 +3,8 @@
 Caching Headers
 ===============
 
-**As**	a web service<br/>
-**I want to**	pay attention to caching header information<br/>
-**So that I can** avoid sending superfluous data<br/>
+**As**	a web service  
+**I want to**	pay attention to caching header information  
+**So that I can** avoid sending superfluous data  
 		
 > **rationale** This reduces overall bandwidth.

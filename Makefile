@@ -9,7 +9,8 @@ PDF_FLAGS = --fontsize 9.0 \
 		--footer "c 1" \
 		--no-toc
 
-MD = toc.md \
+MD = book.md \
+	toc.md \
     EndPoint/ValidEndPoint.md \
     LandingPage/HTML5.md \
     LandingPage/DiscoveryDoc.md \
@@ -43,44 +44,23 @@ publish: clean all
 	git push origin master
 	./bin/deploy.sh
 
-htmlbook.pdf: $(HTML)
+book.html:
 	@echo "\n... generating $@"
-	htmldoc --webpage -f $@ $(PDF_FLAGS) $(HTML)
+	pandoc -s --strict -o book.html -c ./book.css $(MD)
 
-book.md: $(HTML)
+book.docx:
 	@echo "\n... generating $@"
-	cat $(MD) > book.md
+	pandoc -o book.docx -c ./book.css $(MD)
 
-book.html: $(HTML)
+book.pdf:
 	@echo "\n... generating $@"
-	@echo $(HTML)
-	cat pages/head.html pages/title.html $(HTML) pages/tail.html > book.html
+	pandoc -s --strict -o book.pdf  $(MD)
 
 website: book.html public
 	@echo "\n... copying items into ./public"
 	cp book.html public/index.html
 	cp book.pdf public/book.pdf
 	cp -r fig public/fig
-
-%.html: %.md
-	ronn --pipe --fragment $< > $@
-
-book.pdf:
-	@echo "\n... generating $@"
-	ebook-convert book.html book.pdf
-	
-book.mobi:
-	@echo "\n... generating $@"
-	ebook-convert book.html book.mobi --output-profile kindle
-
-book.epub:
-	@echo "\n... generating $@"
-	ebook-convert book.html book.epub \
-		--title "REST Policy Handbook" \
-		--no-default-epub-cover \
-		--authors "Pat Cappelaere" \
-		--language en \
-		--cover pages/cover.jpg
 
 view: book.pdf
 	open book.pdf
@@ -97,7 +77,7 @@ clean:
 	rm -f EndPoint/*.html
 	rm -f OpenSearch/*.html
 	rm -f UniformInterface/*.html
-	rm -f book.*
+	rm -f book.html
 	rm -rf public
 
 clear:
