@@ -1,7 +1,7 @@
 # REST User Stories Table of Contents
 
 * End Point
-  * [is valid and available](https://github.com/cappelaere/rest_stories/blob/master/EndPoint/ValidEndpoint.md)
+  * [is valid and available](https://github.com/cappelaere/rest_stories/blob/master/EndPoint/ValidEndPoint.md)
 * Landing Page
   * [uses HTML5](https://github.com/cappelaere/rest_stories/blob/master/LandingPage/HTML5.md)
   * [has links to Discovery Documents in Head](https://github.com/cappelaere/rest_stories/blob/master/LandingPage/DiscoveryDoc.md)

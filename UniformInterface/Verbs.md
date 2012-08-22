@@ -1,3 +1,5 @@
+<a name="UniformInterface_Verbs"></a>
+
 Limited HTTP Verbs
 ==================
 
@@ -8,7 +10,7 @@ Limited HTTP Verbs
 > **rationale** This allows an application to access resources in a limited and consistent manner
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	link to API Discovery document<br/>
 **When**	I exercise API<br/>

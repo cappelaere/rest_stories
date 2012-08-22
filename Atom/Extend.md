@@ -1,3 +1,5 @@
+<a name="Atom_Extend"></a>
+
 Atom Feeds may be extended
 ==========================
 

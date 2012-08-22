@@ -1,3 +1,5 @@
+<a name="Atom_Atom"></a>
+
 Atom Feeds available for lists of resources
 ===========================================
 
@@ -8,7 +10,7 @@ Atom Feeds available for lists of resources
 > **rationale** This allows a user to subscribe to particular data feed using a familiar NewsFeed Reader.  If the feed is published to an aggregator, the user can receive notifications on changes.
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	list of resources, for each resource end point<br/>
 **When**	I use GET with an application/atom+xml Accept Header<br/>

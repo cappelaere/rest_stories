@@ -1,3 +1,5 @@
+<a name="EndPoint_ValidEndPoint"></a>
+
 Valid Endpoint
 ==============
 
@@ -8,7 +10,7 @@ Valid Endpoint
 > **rationale** We want to make sure that the web service exists and is available
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given** a supplied url<br/>
 **When** I make a HEAD request<br/>

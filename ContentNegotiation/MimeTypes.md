@@ -1,3 +1,5 @@
+<a name="ContentNegotiation_MimeTypes"></a>
+
 Custom Mime Types
 =================
 
@@ -6,14 +8,14 @@ Custom Mime Types
 **So that I can** can signify my acceptance of the interface and get proper resource representation<br/>
 		
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	desire to use Content Negotiation to constrain the interface<br/>
 **When**	I use Mime-types in Accept headers to determine the proper resource representation to retrieve<br/>
 **Then**  	I use one of the existing IANA-approved mime-types that service may support<br/>
 		
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	desire to use custom media type for Content Negotiation to constrain the interface<br/>
 **When**	I use custom Mime-type in Accept headers to determine the proper resource representation to output<br/>

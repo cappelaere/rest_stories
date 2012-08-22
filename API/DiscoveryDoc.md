@@ -1,15 +1,18 @@
-API Discovery Document
-======================
+<a name="API_DiscoveryDoc"></a>
+
+API Explorer
+============
 
 **As** an External Application<br/>
-**I want to** find API Discovery Document<br/>
-**So That I** can get knowledge of API<br/>
+**I want to** find API Explorer<br/>
+**So That I** can learn the API<br/>
 		
-> **rationale** This allows an application to get context information to access API
+> **rationale** This allows a developer to quikcly learn an API using real examples
 
 Acceptance Criteria
-===================
+-------------------
 
-**Given** link to API Discovery document<br/>
-**When**	I follow the link<br/>
-**Then**  	API Discovery Document is accessible<br/>
+**Given** end point url<br/>
+**When** I follow the link<br/>
+**Then**  API explorer link can be discovered in metadata
+**And** link is accessible<br/>

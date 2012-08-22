@@ -1,3 +1,5 @@
+<a name="LandingPage_HTML5"></a>
+
 HTML5
 =====
 
@@ -8,7 +10,7 @@ HTML5
 > **rationale** This allows the application to mine to API.  It requires the page to be properly formatted using HTML5.
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given** a	published web service endpoint<br/>
 **When** I access the landing page<br/>

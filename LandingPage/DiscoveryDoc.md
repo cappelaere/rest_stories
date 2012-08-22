@@ -1,3 +1,5 @@
+<a name="LandingPage_DiscoveryDoc"></a>
+
 Links to Discovery Documents in Head
 ====================================
 
@@ -8,7 +10,7 @@ Links to Discovery Documents in Head
 > **rationale** This allows an external application to get knowledge information regarding the service
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given** the available web service endpoint
 

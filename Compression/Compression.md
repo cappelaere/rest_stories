@@ -1,3 +1,5 @@
+<a name="Compression_Compression"></a>
+
 Compression
 ===========
 
@@ -8,7 +10,7 @@ Compression
 > **rationale** This allows reduced bandwidth consumption.
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	large content<br/>
 **When**	I compress the content using gzip<br/>

@@ -1,0 +1,18 @@
+{
+  "author": "RIP <rip@geobliki.com> (http://rip.jit.su)",
+  "name": "REST User Stories",
+  "description": "Draft User Stories for REST Services",
+  "version": "0.1",
+  "subdomain": "rest_stories",
+  "homepage": "http://handbook.jit.su",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cappelaere/rest_stories"
+  },
+  "dependencies": {
+  },
+  "scripts": {
+  },
+  "engines": {
+  }
+}

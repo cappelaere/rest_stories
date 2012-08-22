@@ -1,3 +1,5 @@
+<a name="OpenSearch_HTMLSearch"></a>
+
 OpenSearch Document
 ===================
 
@@ -8,7 +10,7 @@ OpenSearch Document
 > **rationale** This allows a browser to provide in-line custom search
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	link to OpenSearch document<br/>
 **When**	I follow the link and specify HTML output<br/>

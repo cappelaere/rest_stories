@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier opf:scheme="calibre" id="calibre_id">2</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">e4a87244-a401-4459-be91-4799eadad02b</dc:identifier>
+        <dc:title>REST User Stories</dc:title>
+        <dc:creator opf:file-as="Cappelaere, Pat" opf:role="aut">Pat Cappelaere</dc:creator>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (0.8.65) [http://calibre-ebook.com]</dc:contributor>
+        <dc:date>2012-08-22T14:19:34+00:00</dc:date>
+        <dc:language>eng</dc:language>
+        <meta content="{&quot;Pat Cappelaere&quot;: &quot;&quot;}" name="calibre:author_link_map"/>
+        <meta content="0.0" name="calibre:rating"/>
+        <meta content="2012-08-22T14:19:33+00:00" name="calibre:timestamp"/>
+        <meta content="REST User Stories" name="calibre:title_sort"/>
+    </metadata>
+    <guide>
+        <reference href="REST User Stories - Pat Cappelaere.jpg" type="cover" title="Cover"/>
+    </guide>
+</package>

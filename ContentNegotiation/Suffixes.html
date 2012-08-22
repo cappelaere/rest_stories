@@ -1,0 +1,29 @@
+<div class='mp'>
+<h1><p><a name="ContentNegotiation_Suffixes"></a></p>
+
+Allow Representation Suffixes</h1>
+<p><strong>As</strong>  an External User<br />
+<strong>I want to</strong>   control the output resource representation using additional suffixes to the url<br />
+<strong>So that I can</strong> can get a representation that I can process without using Accept Headers<br /></p>
+
+<blockquote><p><strong>rationale</strong> This allows an external user to get specific resource representation directly from the browser without using Accept headers</p></blockquote>
+
+<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
+
+<p><strong>Given</strong>   list a resource urls and for each url<br />
+<strong>When</strong>    I add .html extension to the URL <br />
+<strong>Then</strong>    I obtain a resource with Content-Type=text/html<br /></p>
+
+<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
+
+<p><strong>Given</strong>   list a resource urls and for each url<br />
+<strong>When</strong>    I add .json  extension to the URL<br />
+<strong>Then</strong>    I obtain a resource with Content-Type=application/json<br /></p>
+
+<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
+
+<p><strong>Given</strong>   list a resource urls and for each url<br />
+<strong>When</strong>    I set .xyz or invalid extension to the URL<br />
+<strong>Then</strong>    I get a 406 error<br /></p>
+
+</div>

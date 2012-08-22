@@ -1,0 +1,21 @@
+<div class='mp'>
+<h1><p><a name="Atom_GData2.0"></a></p>
+
+Atom Feeds can be extended using Gdata 2.0 protocol</h1>
+<p><strong>As</strong>  a server<br />
+<strong>I want to</strong> extend the ATOM protocol using GData 2.0<br />
+<strong>So that I</strong> can publish my own resources in a meaningful way<br /></p>
+
+<blockquote><p><strong>rationale</strong> This allows an external Application to have access to the resources in a meaningful way without having to parse the HTML content</p></blockquote>
+
+<h2 id="Acceptance-Criteria">Acceptance Criteria</h2>
+
+<p><strong>Given</strong>   list of resources, for each resource end point<br />
+<strong>When</strong>    I use GET with an application/atom+xml Accept Header<br />
+<strong>Then</strong>    feed uses etag attribute<br />
+<strong>And</strong>     feed uses category tag and proper accessible schema<br />
+<strong>And</strong>     feed uses OpenSearch namespace and attributes<br />
+<strong>And</strong>     entries use etag attribute<br />
+<strong>And</strong>     entries use category tag and proper accessible format<br /></p>
+
+</div>

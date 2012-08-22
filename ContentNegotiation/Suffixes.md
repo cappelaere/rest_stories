@@ -1,3 +1,5 @@
+<a name="ContentNegotiation_Suffixes"></a>
+
 Allow Representation Suffixes
 =============================
 
@@ -8,21 +10,21 @@ Allow Representation Suffixes
 > **rationale** This allows an external user to get specific resource representation directly from the browser without using Accept headers
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	list a resource urls and for each url<br/>
 **When**	I add .html extension to the URL <br/>
 **Then**  	I obtain a resource with Content-Type=text/html<br/>
 
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	list a resource urls and for each url<br/>
 **When**	I add .json  extension to the URL<br/>
 **Then**  	I obtain a resource with Content-Type=application/json<br/>
 	
 Acceptance Criteria
-===================
+-------------------
 
 **Given**	list a resource urls and for each url<br/>
 **When**	I set .xyz or invalid extension to the URL<br/>
