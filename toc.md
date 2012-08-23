@@ -12,6 +12,8 @@
 	* [Atom API Search](#OpenSearch_ATOMSearch)
 * Discovery Service
 	* [Using Google API Discovery Document](#Discovery_GoogleDiscovery)
+		* [is accessible](#Discovery_GoogleDiscovery)
+		* [contains API metadata](#Discovery_GoogleDiscovery)
 	* [Using Geoservices Discovery Catalog](#Discovery_GeoServices)
 	* [Using Atompub](#Discovery_Atompub)
 	* [No Discovery Document](#Discovery_None)
@@ -21,7 +23,8 @@
 	* [uses limited http verbs](#UniformInterface_Verbs)
 	* [follows idempotence rules](#UniformInterface_Idempotence)
 * Content Negotiation
-	* [uses Accept and Content-Type headers](#ContentNegotiation_Headers)
+	* [uses Accept and Content Type headers](#ContentNegotiation_Headers)
+		* [should support Accept and Content Type headers](#ContentNegotiation_Headers)
 	* [allows representation suffixes](#ContentNegotiation_Suffixes)
 	* [supports custom mime types](#ContentNegotiation_MimeTypes)
 * Atom Feeds
