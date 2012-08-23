@@ -1,15 +1,15 @@
 Title
 =====
 
-**As** [role] <br/>
-**I want to** [want] <br/>
-**So That I** [benefit] <br/>
+**As** [role]   
+**I want to** [want]   
+**So That I** [benefit]   
 		
 > **rationale** 
 
 Acceptance Criteria
 ===================
 
-**Given** 	<br/>
-**When**	<br/>
-**Then**  	<br/>
+**Given** 	  
+**When**	  
+**Then**  	  

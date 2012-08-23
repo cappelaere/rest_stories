@@ -11,9 +11,9 @@
 	* [HTML API Search](#OpenSearch_HTMLSearch)
 	* [Atom API Search](#OpenSearch_ATOMSearch)
 * Discovery Service
-	* [Using_Google_API_Discovery_Document](#Discovery_GoogleDiscovery)
-	* [Using_Geoservices_Discovery_Catalog](#Discovery_GeoServices)
-	* [Using_Atompub](#Discovery_Atompub)
+	* [Using Google API Discovery Document](#Discovery_GoogleDiscovery)
+	* [Using Geoservices Discovery Catalog](#Discovery_GeoServices)
+	* [Using Atompub](#Discovery_Atompub)
 	* [No Discovery Document](#Discovery_None)
 * API Explorer
 	* [link can be discovered](#API_DiscoveryDoc)

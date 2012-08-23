@@ -1,13 +1,3 @@
-# Makefile originally from the 'Mastering Node' book written TJ Holowaychuk
-# https://github.com/visionmedia/masteringnode
-#
-
-PDF_FLAGS = --fontsize 9.0 \
-		--linkstyle plain \
-		--linkcolor blue \
-		--embedfonts \
-		--footer "c 1" \
-		--no-toc
 
 MD = book.md \
 	toc.md \
@@ -32,9 +22,7 @@ MD = book.md \
 	Caching/Caching.md \
 	Caching/GData2.0.md 
 
-HTML = $(MD:.md=.html)
-
-all: book.html book.pdf book.md website clear
+all: book.html book.docx clear
 
 regenerate: clean all
 	git commit -a -m '[dist] Regenerated handbook' && echo done
@@ -55,15 +43,6 @@ book.docx:
 book.pdf:
 	@echo "\n... generating $@"
 	pandoc -s --strict -o book.pdf  $(MD)
-
-website: book.html public
-	@echo "\n... copying items into ./public"
-	cp book.html public/index.html
-	cp book.pdf public/book.pdf
-	cp -r fig public/fig
-
-view: book.pdf
-	open book.pdf
 
 clean:
 	rm toc.html
